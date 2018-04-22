@@ -21,7 +21,6 @@ class DeckList extends Component {
     render (){
         const {deckList} = this.state
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        console.log(deckList);
         return (
             <ListView
                 dataSource={ds.cloneWithRows(deckList)}
