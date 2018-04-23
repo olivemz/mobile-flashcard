@@ -149,7 +149,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             shadowOffset: {
                 width: 0,
                 height: 3
-            }
+            },
+            alignItems: 'center'
         },
         deckName: {
             fontSize: 25,

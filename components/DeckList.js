@@ -46,11 +46,12 @@ const styles = StyleSheet.create({
             width: 0,
             height: 3
         },
+        alignItems: 'center',
     },
     deckName: {
         fontSize: 25,
         paddingTop: 20,
-        paddingBottom: 20
+        paddingBottom: 20,
     },
     deckCardNumber:{
         fontSize: 15,
