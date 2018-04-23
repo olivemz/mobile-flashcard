@@ -1,95 +1,178 @@
 __d(function (global, _require, module, exports, _dependencyMap) {
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
 
-  var _react2 = _require(_dependencyMap[0], "react");
+    var _react2 = _require(_dependencyMap[0], "react");
 
-  var _react3 = _interopRequireDefault(_react2);
+    var _react3 = _interopRequireDefault(_react2);
 
-  var _index = _require(_dependencyMap[1], "./node_modules/react-transform-hmr/lib/index.js");
+    var _index = _require(_dependencyMap[1], "./node_modules/react-transform-hmr/lib/index.js");
 
-  var _index2 = _interopRequireDefault(_index);
+    var _index2 = _interopRequireDefault(_index);
 
-  var _jsxFileName = "/Users/chensongzhu/mobile-flashcard/App.js";
+    var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-  var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+    var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-  var _reactNative = _require(_dependencyMap[2], "react-native");
+    var _jsxFileName = "/Users/chensongzhu/mobile-flashcard/App.js";
 
-  var _DeckList = _require(_dependencyMap[3], "./components/DeckList");
+    var _reactNative = _require(_dependencyMap[2], "react-native");
 
-  var _DeckList2 = _interopRequireDefault(_DeckList);
+    var _DeckList = _require(_dependencyMap[3], "./components/DeckList");
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    var _DeckList2 = _interopRequireDefault(_DeckList);
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    var _reactNavigation = _require(_dependencyMap[4], "react-navigation");
 
-  function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+    var _NewDeck = _require(_dependencyMap[5], "./components/NewDeck");
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+    var _NewDeck2 = _interopRequireDefault(_NewDeck);
 
-  var _components = {
-    App: {
-      displayName: "App"
-    }
-  };
+    var _colors = _require(_dependencyMap[6], "./utils/colors");
 
-  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
-    filename: "/Users/chensongzhu/mobile-flashcard/App.js",
-    components: _components,
-    locals: [module],
-    imports: [_react3.default]
-  });
+    var _vectorIcons = _require(_dependencyMap[7], "@expo/vector-icons");
 
-  function _wrapComponent(id) {
-    return function (Component) {
-      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    var _expo = _require(_dependencyMap[8], "expo");
+
+    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+    function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+    function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+    function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+    var _components = {
+        App: {
+            displayName: "App"
+        }
     };
-  }
 
-  var App = _wrapComponent("App")(function (_React$Component) {
-    _inherits(App, _React$Component);
+    var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+        filename: "/Users/chensongzhu/mobile-flashcard/App.js",
+        components: _components,
+        locals: [module],
+        imports: [_react3.default]
+    });
 
-    function App() {
-      _classCallCheck(this, App);
-
-      return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    function _wrapComponent(id) {
+        return function (Component) {
+            return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+        };
     }
 
-    _createClass(App, [{
-      key: "render",
-      value: function render() {
+    function UdaciStatusBar(_ref) {
+        var backgroundColor = _ref.backgroundColor,
+            props = _objectWithoutProperties(_ref, ["backgroundColor"]);
+
         return _react3.default.createElement(
-          _reactNative.View,
-          {
-            style: styles.container,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 8
-            }
-          },
-          _react3.default.createElement(_DeckList2.default, {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 9
-            }
-          })
+            _reactNative.View,
+            {
+                style: {
+                    backgroundColor: backgroundColor,
+                    height: _expo.Constants.statusBarHeight
+                },
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 12
+                }
+            },
+            _react3.default.createElement(_reactNative.StatusBar, _extends({
+                translucent: true,
+                backgroundColor: backgroundColor
+            }, props, {
+                __source: {
+                    fileName: _jsxFileName,
+                    lineNumber: 13
+                }
+            }))
         );
-      }
-    }]);
-
-    return App;
-  }(_react3.default.Component));
-
-  exports.default = App;
-
-  var styles = _reactNative.StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center'
     }
-  });
+
+    var Tabs = (0, _reactNavigation.TabNavigator)({
+        DeckList: {
+            screen: _DeckList2.default,
+            navigationOptions: {
+                tabBarLabel: 'Decks'
+            }
+        },
+        NewDeck: {
+            screen: _NewDeck2.default,
+            navigationOptions: {
+                tabBarLabel: 'NEW DECK'
+            }
+        }
+    }, {
+        navigationOptions: {
+            header: null
+        },
+        tabBarOptions: {
+            activeTintColor: _reactNative.Platform.OS === 'ios' ? _colors.purple : _colors.white,
+            style: {
+                height: 56,
+                backgroundColor: _reactNative.Platform.OS === 'ios' ? _colors.white : _colors.purple,
+                shadowColor: 'rgba(0, 0, 0, 0.24)',
+                shadowOffset: {
+                    width: 0,
+                    height: 3
+                },
+                shadowRadius: 6,
+                shadowOpacity: 1
+            }
+        }
+    });
+    var MainNavigator = (0, _reactNavigation.StackNavigator)({
+        Home: {
+            screen: Tabs
+        }
+    });
+
+    var App = _wrapComponent("App")(function (_React$Component) {
+        _inherits(App, _React$Component);
+
+        function App() {
+            _classCallCheck(this, App);
+
+            return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        }
+
+        _createClass(App, [{
+            key: "render",
+            value: function render() {
+                return _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        style: {
+                            flex: 1
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 60
+                        }
+                    },
+                    _react3.default.createElement(UdaciStatusBar, {
+                        backgroundColor: _colors.purple,
+                        barStyle: "light-content",
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 61
+                        }
+                    }),
+                    _react3.default.createElement(MainNavigator, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 62
+                        }
+                    })
+                );
+            }
+        }]);
+
+        return App;
+    }(_react3.default.Component));
+
+    exports.default = App;
 });

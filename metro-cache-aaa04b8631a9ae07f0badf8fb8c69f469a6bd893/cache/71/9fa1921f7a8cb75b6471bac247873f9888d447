@@ -118,7 +118,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         return r1 !== r2;
                     }
                 });
-                console.log(deckList);
                 return _react3.default.createElement(_reactNative.ListView, {
                     dataSource: ds.cloneWithRows(deckList),
                     renderRow: function renderRow(rowData) {
@@ -126,7 +125,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 26
+                        lineNumber: 25
                     }
                 });
             }
