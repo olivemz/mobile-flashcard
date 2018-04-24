@@ -6,6 +6,10 @@ import NewDeck from './components/NewDeck'
 import { white, purple } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { Constants } from 'expo'
+import CardDetail from './components/CardDetail'
+import DeckEntry from "./components/DeckEntry";
+import NewCard from "./components/NewCard";
+
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
@@ -51,6 +55,33 @@ const Tabs = TabNavigator({
 const MainNavigator = StackNavigator({
     Home: {
         screen: Tabs,
+    },
+    CardDetail: {
+        screen: CardDetail,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    },
+    DeckEntry: {
+        screen: DeckEntry,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
+    },
+    NewCard: {
+        screen: NewCard,
+        navigationOptions: {
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
     }
 })
 

@@ -35,6 +35,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _expo = _require(_dependencyMap[8], "expo");
 
+    var _CardDetail = _require(_dependencyMap[9], "./components/CardDetail");
+
+    var _CardDetail2 = _interopRequireDefault(_CardDetail);
+
+    var _DeckEntry = _require(_dependencyMap[10], "./components/DeckEntry");
+
+    var _DeckEntry2 = _interopRequireDefault(_DeckEntry);
+
+    var _NewCard = _require(_dependencyMap[11], "./components/NewCard");
+
+    var _NewCard2 = _interopRequireDefault(_NewCard);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77,7 +89,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 12
+                    lineNumber: 16
                 }
             },
             _react3.default.createElement(_reactNative.StatusBar, _extends({
@@ -86,7 +98,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, props, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 13
+                    lineNumber: 17
                 }
             }))
         );
@@ -127,6 +139,33 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     var MainNavigator = (0, _reactNavigation.StackNavigator)({
         Home: {
             screen: Tabs
+        },
+        CardDetail: {
+            screen: _CardDetail2.default,
+            navigationOptions: {
+                headerTintColor: _colors.white,
+                headerStyle: {
+                    backgroundColor: _colors.purple
+                }
+            }
+        },
+        DeckEntry: {
+            screen: _DeckEntry2.default,
+            navigationOptions: {
+                headerTintColor: _colors.white,
+                headerStyle: {
+                    backgroundColor: _colors.purple
+                }
+            }
+        },
+        NewCard: {
+            screen: _NewCard2.default,
+            navigationOptions: {
+                headerTintColor: _colors.white,
+                headerStyle: {
+                    backgroundColor: _colors.purple
+                }
+            }
         }
     });
 
@@ -150,7 +189,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 60
+                            lineNumber: 91
                         }
                     },
                     _react3.default.createElement(UdaciStatusBar, {
@@ -158,13 +197,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         barStyle: "light-content",
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 61
+                            lineNumber: 92
                         }
                     }),
                     _react3.default.createElement(MainNavigator, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 62
+                            lineNumber: 93
                         }
                     })
                 );

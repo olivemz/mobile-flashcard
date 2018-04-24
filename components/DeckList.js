@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {View,ListView, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 import { white } from '../utils/colors'
+import { StackNavigator } from 'react-navigation';
+import DeckEntry from "./DeckEntry";
 
 class DeckList extends Component {
 
@@ -9,14 +11,17 @@ class DeckList extends Component {
     }
 
     renderDeck = ({name, cardsNumbers}) =>(
-        <View style ={styles.item}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate(
+            'DeckEntry',
+            { question: '', answer:'' }
+        )} style ={styles.item}>
             <Text style={styles.deckName}>
                 {name}
             </Text>
             <Text style={styles.deckCardNumber}>
                 cards number: {cardsNumbers}
             </Text>
-        </View>
+        </TouchableOpacity>
     )
     render (){
         const {deckList} = this.state

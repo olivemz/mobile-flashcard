@@ -5,35 +5,40 @@ import TextButton from './TextButton'
 import * as flashCardApi  from '../utils/api'
 
 
-class DeckEntry extends Component{
+class CardDetail extends Component{
     state ={
-        name:'asdf',
-        cardsNumbers: 123
+        type:'Question'
     }
-    addCard =() =>{
-        this.props.navigation.navigate(
-            'NewCard',
-            {deckName:'123'}
-        )
+    correct =() =>{
     }
-    startQuiz =() =>{
+    incorrect =() =>{
 
     }
+    flipCard=(type) =>{
+        this.setState(()=>({
+            type:(type==='Question')?'Answer':'Question'
+        }))
+    }
+    nextCard=() =>{
+
+    }
+
     render(){
-        const {name, cardsNumbers} = this.state
+        const {type} = this.state
+        const {question, answer} = this.props
         return(
             <View>
                 <Text style={styles.deckName}>
-                    {name}
+                    {(type==='Question')? question: answer}
                 </Text>
-                <Text style={styles.deckCardNumber}>
-                    cards number: {cardsNumbers}
-                </Text>
-                <TextButton style={{margin: 20}} onPress={this.addCard}>
-                    Add Card
+                <TextButton style={{margin: 20}} onPress={(type) => this.flipCard(type)}>
+                    {type}
                 </TextButton>
-                <TextButton style={{margin: 20}} onPress={this.startQuiz}>
-                    Start Quiz
+                <TextButton style={{margin: 20}} onPress={this.correct}>
+                    Correct
+                </TextButton>
+                <TextButton style={{margin: 20}} onPress={this.incorrect}>
+                    Incorrect
                 </TextButton>
             </View>
         )
@@ -62,4 +67,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default DeckEntry
+export default CardDetail

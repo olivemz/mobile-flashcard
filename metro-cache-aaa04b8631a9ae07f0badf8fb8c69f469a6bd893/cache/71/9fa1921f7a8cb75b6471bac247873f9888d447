@@ -19,6 +19,12 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _colors = _require(_dependencyMap[3], "../utils/colors");
 
+    var _reactNavigation = _require(_dependencyMap[4], "react-navigation");
+
+    var _DeckEntry = _require(_dependencyMap[5], "./DeckEntry");
+
+    var _DeckEntry2 = _interopRequireDefault(_DeckEntry);
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -72,12 +78,18 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 var name = _ref2.name,
                     cardsNumbers = _ref2.cardsNumbers;
                 return _react3.default.createElement(
-                    _reactNative.View,
+                    _reactNative.TouchableOpacity,
                     {
+                        onPress: function onPress() {
+                            return _this.props.navigation.navigate('DeckEntry', {
+                                question: '',
+                                answer: ''
+                            });
+                        },
                         style: styles.item,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 12
+                            lineNumber: 14
                         }
                     },
                     _react3.default.createElement(
@@ -86,7 +98,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.deckName,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 13
+                                lineNumber: 18
                             }
                         },
                         name
@@ -97,7 +109,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.deckCardNumber,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 16
+                                lineNumber: 21
                             }
                         },
                         "cards number: ",
@@ -125,7 +137,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 25
+                        lineNumber: 30
                     }
                 });
             }

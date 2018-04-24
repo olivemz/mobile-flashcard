@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View,ListView, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
+import {View,ListView, Text, StyleSheet, Platform, TouchableOpacity,TextInput } from 'react-native'
 import { white } from '../utils/colors'
 import TextButton from './TextButton'
 import * as flashCardApi  from '../utils/api'
