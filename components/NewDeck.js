@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {View, TextInput,ListView, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
 import { white } from '../utils/colors'
 import TextButton from './TextButton'
-import * as flashCardApi  from '../utils/api'
+import {submitDeck}  from '../utils/api'
 
 
 class NewDeck extends Component{
@@ -10,7 +10,8 @@ class NewDeck extends Component{
         deckName:''
     }
     submit =() =>{
-        (this.state.deckName) && flashCardApi.submitDeck(this.state.deckName)
+        console.log('this deck is', this.state.deckName);
+        (this.state.deckName) && submitDeck(this.state.deckName) && this.props.navigation.navigate('Home')
     }
     render(){
         return(

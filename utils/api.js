@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-const DECK_NAME = 'DECKNAME'
+const DECK_NAME = 'MobileFlashcard:deckname'
 
 export function fetchDeckResults () {
     return AsyncStorage.getItem(DECK_NAME)
@@ -9,7 +9,7 @@ export function getOneDeck (key) {
     return AsyncStorage.getItem(DECK_NAME).filter((deck)=>deck.title===key)
 }
 
-export function submitDeck ({ key }) {
+export function submitDeck (key) {
     return AsyncStorage.mergeItem(DECK_NAME, JSON.stringify({
         [key]: {title:key, questions:[]}
     }))

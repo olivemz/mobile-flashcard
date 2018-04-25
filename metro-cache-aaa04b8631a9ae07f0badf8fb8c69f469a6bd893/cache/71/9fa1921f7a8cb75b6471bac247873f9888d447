@@ -25,6 +25,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _DeckEntry2 = _interopRequireDefault(_DeckEntry);
 
+    var _api = _require(_dependencyMap[6], "../utils/api");
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77,19 +79,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, _this.renderDeck = function (_ref2) {
                 var name = _ref2.name,
                     cardsNumbers = _ref2.cardsNumbers;
+                console.log('name is', name);
                 return _react3.default.createElement(
                     _reactNative.TouchableOpacity,
                     {
                         onPress: function onPress() {
                             return _this.props.navigation.navigate('DeckEntry', {
-                                question: '',
-                                answer: ''
+                                name: name,
+                                cardsNumbers: cardsNumbers
                             });
                         },
                         style: styles.item,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 14
+                            lineNumber: 30
                         }
                     },
                     _react3.default.createElement(
@@ -98,7 +101,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.deckName,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 18
+                                lineNumber: 35
                             }
                         },
                         name
@@ -109,7 +112,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.deckCardNumber,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 21
+                                lineNumber: 38
                             }
                         },
                         "cards number: ",
@@ -120,9 +123,30 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }
 
         _createClass(DeckList, [{
+            key: "componentDidMount",
+            value: function componentDidMount() {
+                var _this2 = this;
+
+                (0, _api.fetchDeckResults)().then(function (items) {
+                    items = JSON.parse(items);
+                    console.log('items is', Object.entries(items));
+                    var deckList = [];
+                    Object.entries(items).map(function (item) {
+                        1 in item && 'title' in item[1] && deckList.push({
+                            name: item[1].title,
+                            cardsNumbers: item[1].questions.length
+                        });
+                    });
+
+                    _this2.setState({
+                        deckList: deckList
+                    });
+                });
+            }
+        }, {
             key: "render",
             value: function render() {
-                var _this2 = this;
+                var _this3 = this;
 
                 var deckList = this.state.deckList;
                 var ds = new _reactNative.ListView.DataSource({
@@ -133,11 +157,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 return _react3.default.createElement(_reactNative.ListView, {
                     dataSource: ds.cloneWithRows(deckList),
                     renderRow: function renderRow(rowData) {
-                        return _this2.renderDeck(rowData);
+                        return _this3.renderDeck(rowData);
                     },
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 30
+                        lineNumber: 47
                     }
                 });
             }

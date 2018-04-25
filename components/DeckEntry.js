@@ -6,21 +6,20 @@ import * as flashCardApi  from '../utils/api'
 
 
 class DeckEntry extends Component{
-    state ={
-        name:'asdf',
-        cardsNumbers: 123
-    }
-    addCard =() =>{
+    addCard =(name) =>{
         this.props.navigation.navigate(
             'NewCard',
-            {deckName:'123'}
+            {name}
         )
     }
     startQuiz =() =>{
 
     }
     render(){
-        const {name, cardsNumbers} = this.state
+        const params = this.props.navigation.state.params
+        const name =  params ? params.name : ''
+        const cardsNumbers = params ? params.cardsNumbers : ''
+
         return(
             <View>
                 <Text style={styles.deckName}>
@@ -29,10 +28,10 @@ class DeckEntry extends Component{
                 <Text style={styles.deckCardNumber}>
                     cards number: {cardsNumbers}
                 </Text>
-                <TextButton style={{margin: 20}} onPress={this.addCard}>
+                <TextButton style={{margin: 20}} onPress={(name) => this.addCard(name)}>
                     Add Card
                 </TextButton>
-                <TextButton style={{margin: 20}} onPress={this.startQuiz}>
+                <TextButton style={{margin: 20}} onPress={(name) => this.startQuiz(name)}>
                     Start Quiz
                 </TextButton>
             </View>

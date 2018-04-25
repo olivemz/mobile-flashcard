@@ -3,17 +3,34 @@ import {View,ListView, Text, StyleSheet, Platform, TouchableOpacity } from 'reac
 import { white } from '../utils/colors'
 import { StackNavigator } from 'react-navigation';
 import DeckEntry from "./DeckEntry";
+import { fetchDeckResults } from '../utils/api'
+
 
 class DeckList extends Component {
+
 
     state = {
         deckList: [{name:'test1', cardsNumbers:11},{name:'test2', cardsNumbers:3}]
     }
 
-    renderDeck = ({name, cardsNumbers}) =>(
-        <TouchableOpacity onPress={() => this.props.navigation.navigate(
+    componentDidMount (){
+        fetchDeckResults().then((items)=>{
+            items = JSON.parse(items)
+            console.log('items is', Object.entries(items));
+            let deckList = []
+            Object.entries(items).map(
+                (item) => {
+                    (1 in item ) && ('title' in item[1])&&(deckList.push({name:item[1].title, cardsNumbers:item[1].questions.length}))
+                }
+            )
+            this.setState({deckList: deckList})
+        })
+    }
+    renderDeck = ({name, cardsNumbers}) =>{ console.log ('name is', name) ; return (
+        <TouchableOpacity onPress={() =>
+            this.props.navigation.navigate(
             'DeckEntry',
-            { question: '', answer:'' }
+            {name,cardsNumbers}
         )} style ={styles.item}>
             <Text style={styles.deckName}>
                 {name}
@@ -22,7 +39,7 @@ class DeckList extends Component {
                 cards number: {cardsNumbers}
             </Text>
         </TouchableOpacity>
-    )
+    )}
     render (){
         const {deckList} = this.state
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});

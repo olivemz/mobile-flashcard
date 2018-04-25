@@ -89,7 +89,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 16
+                    lineNumber: 15
                 }
             },
             _react3.default.createElement(_reactNative.StatusBar, _extends({
@@ -98,7 +98,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, props, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 17
+                    lineNumber: 16
                 }
             }))
         );
@@ -189,7 +189,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 91
+                            lineNumber: 90
                         }
                     },
                     _react3.default.createElement(UdaciStatusBar, {
@@ -197,13 +197,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         barStyle: "light-content",
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 92
+                            lineNumber: 91
                         }
                     }),
                     _react3.default.createElement(MainNavigator, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 93
+                            lineNumber: 92
                         }
                     })
                 );

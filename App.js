@@ -10,7 +10,6 @@ import CardDetail from './components/CardDetail'
 import DeckEntry from "./components/DeckEntry";
 import NewCard from "./components/NewCard";
 
-
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
         <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
