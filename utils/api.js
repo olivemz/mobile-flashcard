@@ -5,8 +5,11 @@ export function fetchDeckResults () {
     return AsyncStorage.getItem(DECK_NAME)
 }
 
-export function getOneDeck (key) {
-    return AsyncStorage.getItem(DECK_NAME).filter((deck)=>deck.title===key)
+export function getQuestionsInOneDeck (key) {
+    return AsyncStorage.getItem(DECK_NAME).then((results)=>{
+        const data = JSON.parse(results)
+        return data[key]['questions']
+    })
 }
 
 export function submitDeck (key) {
@@ -21,7 +24,6 @@ export function submitCard ( entry, key ) {
             const data = JSON.parse(results)
             console.log(key, entry);
             data[key]['questions'].push(entry)
-            console.log(data);
             AsyncStorage.setItem(DECK_NAME, JSON.stringify(data))
         })
 }

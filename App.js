@@ -54,10 +54,19 @@ const Tabs = TabNavigator({
 const MainNavigator = StackNavigator({
     Home: {
         screen: Tabs,
+        navigationOptions: {
+            title: "Deck List",
+            headerTintColor: white,
+            headerStyle: {
+                backgroundColor: purple,
+            }
+        }
     },
     CardDetail: {
+        path: "Card Detail",
         screen: CardDetail,
         navigationOptions: {
+            title: "Start Quiz",
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
@@ -67,6 +76,7 @@ const MainNavigator = StackNavigator({
     DeckEntry: {
         screen: DeckEntry,
         navigationOptions: {
+            title: "Deck",
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,
@@ -76,6 +86,7 @@ const MainNavigator = StackNavigator({
     NewCard: {
         screen: NewCard,
         navigationOptions: {
+            title: "New Card",
             headerTintColor: white,
             headerStyle: {
                 backgroundColor: purple,

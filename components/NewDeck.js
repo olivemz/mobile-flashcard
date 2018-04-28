@@ -11,7 +11,14 @@ class NewDeck extends Component{
     }
     submit =() =>{
         console.log('this deck is', this.state.deckName);
-        (this.state.deckName) && submitDeck(this.state.deckName) && this.props.navigation.navigate('Home')
+        let name = this.state.deckName;
+        let cardsNumbers = 0;
+        (this.state.deckName) && submitDeck(this.state.deckName).then(
+            this.setState({deckName:''})
+        ).then(this.props.navigation.navigate(
+            'DeckEntry',
+            {name, cardsNumbers}
+        ))
     }
     render(){
         return(

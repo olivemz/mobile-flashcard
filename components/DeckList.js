@@ -10,7 +10,7 @@ class DeckList extends Component {
 
 
     state = {
-        deckList: [{name:'test1', cardsNumbers:11},{name:'test2', cardsNumbers:3}]
+        deckList: []
     }
 
     componentDidMount (){

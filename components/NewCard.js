@@ -14,7 +14,8 @@ class NewCard extends Component{
         (this.state.question && this.state.answer) &&
         flashCardApi.submitCard({question: this.state.question, answer: this.state.answer},name).then(
            this.setState({question:'',answer:''})
-        );
+        )
+
     }
     render(){
         const params = this.props.navigation.state.params
@@ -23,13 +24,13 @@ class NewCard extends Component{
         return(
             <View>
                 <TextInput
-                    style={{height: 20, borderColor: 'gray', borderWidth: 1}}
+                    style={styles.input}
                     onChangeText={(question) => this.setState({question})}
                     value={this.state.question}
                     placeholder='Enter Question here'
                 />
                 <TextInput
-                    style={{height: 20, borderColor: 'gray', borderWidth: 1}}
+                    style={styles.input}
                     onChangeText={(answer) => this.setState({answer})}
                     value={this.state.answer}
                     placeholder='Enter Answer here'
@@ -41,5 +42,11 @@ class NewCard extends Component{
         )
     }
 }
-
+const styles = StyleSheet.create({
+    input: {height: 40, borderColor: 'gray', borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10,}
+})
 export default NewCard

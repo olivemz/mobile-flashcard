@@ -6,14 +6,17 @@ import * as flashCardApi  from '../utils/api'
 
 
 class DeckEntry extends Component{
-    addCard =(name,cardsNumbers) =>{
+    addCard =(name) =>{
         this.props.navigation.navigate(
             'NewCard',
             {name}
         )
     }
-    startQuiz =() =>{
-
+    startQuiz =(name) =>{
+        this.props.navigation.navigate(
+            'CardDetail',
+            {name}
+        )
     }
     render(){
         const params = this.props.navigation.state.params

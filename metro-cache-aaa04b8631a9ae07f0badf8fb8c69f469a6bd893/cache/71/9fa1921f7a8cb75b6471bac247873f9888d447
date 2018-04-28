@@ -69,13 +69,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }
 
             return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DeckList.__proto__ || Object.getPrototypeOf(DeckList)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-                deckList: [{
-                    name: 'test1',
-                    cardsNumbers: 11
-                }, {
-                    name: 'test2',
-                    cardsNumbers: 3
-                }]
+                deckList: []
             }, _this.renderDeck = function (_ref2) {
                 var name = _ref2.name,
                     cardsNumbers = _ref2.cardsNumbers;

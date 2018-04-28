@@ -138,11 +138,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
     });
     var MainNavigator = (0, _reactNavigation.StackNavigator)({
         Home: {
-            screen: Tabs
+            screen: Tabs,
+            navigationOptions: {
+                title: "Deck List",
+                headerTintColor: _colors.white,
+                headerStyle: {
+                    backgroundColor: _colors.purple
+                }
+            }
         },
         CardDetail: {
+            path: "Card Detail",
             screen: _CardDetail2.default,
             navigationOptions: {
+                title: "Start Quiz",
                 headerTintColor: _colors.white,
                 headerStyle: {
                     backgroundColor: _colors.purple
@@ -152,6 +161,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         DeckEntry: {
             screen: _DeckEntry2.default,
             navigationOptions: {
+                title: "Deck",
                 headerTintColor: _colors.white,
                 headerStyle: {
                     backgroundColor: _colors.purple
@@ -161,6 +171,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         NewCard: {
             screen: _NewCard2.default,
             navigationOptions: {
+                title: "New Card",
                 headerTintColor: _colors.white,
                 headerStyle: {
                     backgroundColor: _colors.purple
@@ -189,7 +200,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         },
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 90
+                            lineNumber: 101
                         }
                     },
                     _react3.default.createElement(UdaciStatusBar, {
@@ -197,13 +208,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         barStyle: "light-content",
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 91
+                            lineNumber: 102
                         }
                     }),
                     _react3.default.createElement(MainNavigator, {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 92
+                            lineNumber: 103
                         }
                     })
                 );
