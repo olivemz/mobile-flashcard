@@ -47,6 +47,14 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _NewCard2 = _interopRequireDefault(_NewCard);
 
+    var _reducers = _require(_dependencyMap[12], "./reducers");
+
+    var _reducers2 = _interopRequireDefault(_reducers);
+
+    var _reactRedux = _require(_dependencyMap[13], "react-redux");
+
+    var _redux = _require(_dependencyMap[14], "redux");
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -89,7 +97,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 15
+                    lineNumber: 18
                 }
             },
             _react3.default.createElement(_reactNative.StatusBar, _extends({
@@ -98,7 +106,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, props, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 16
+                    lineNumber: 19
                 }
             }))
         );
@@ -193,30 +201,40 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             key: "render",
             value: function render() {
                 return _react3.default.createElement(
-                    _reactNative.View,
+                    _reactRedux.Provider,
                     {
-                        style: {
-                            flex: 1
-                        },
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 101
-                        }
-                    },
-                    _react3.default.createElement(UdaciStatusBar, {
-                        backgroundColor: _colors.purple,
-                        barStyle: "light-content",
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 102
-                        }
-                    }),
-                    _react3.default.createElement(MainNavigator, {
+                        store: (0, _redux.createStore)(_reducers2.default),
                         __source: {
                             fileName: _jsxFileName,
                             lineNumber: 103
                         }
-                    })
+                    },
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        {
+                            style: {
+                                flex: 1
+                            },
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 104
+                            }
+                        },
+                        _react3.default.createElement(UdaciStatusBar, {
+                            backgroundColor: _colors.purple,
+                            barStyle: "light-content",
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 105
+                            }
+                        }),
+                        _react3.default.createElement(MainNavigator, {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 106
+                            }
+                        })
+                    )
                 );
             }
         }]);

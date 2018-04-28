@@ -27,6 +27,10 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _api = _require(_dependencyMap[6], "../utils/api");
 
+    var _reactRedux = _require(_dependencyMap[7], "react-redux");
+
+    var _actions = _require(_dependencyMap[8], "../actions");
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -68,25 +72,21 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 args[_key] = arguments[_key];
             }
 
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DeckList.__proto__ || Object.getPrototypeOf(DeckList)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-                deckList: []
-            }, _this.renderDeck = function (_ref2) {
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = DeckList.__proto__ || Object.getPrototypeOf(DeckList)).call.apply(_ref, [this].concat(args))), _this), _this.renderDeck = function (_ref2) {
                 var name = _ref2.name,
                     cardsNumbers = _ref2.cardsNumbers;
-                console.log('name is', name);
                 return _react3.default.createElement(
                     _reactNative.TouchableOpacity,
                     {
                         onPress: function onPress() {
                             return _this.props.navigation.navigate('DeckEntry', {
-                                name: name,
-                                cardsNumbers: cardsNumbers
+                                name: name
                             });
                         },
                         style: styles.item,
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 30
+                            lineNumber: 25
                         }
                     },
                     _react3.default.createElement(
@@ -95,7 +95,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.deckName,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 35
+                                lineNumber: 30
                             }
                         },
                         name
@@ -106,7 +106,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             style: styles.deckCardNumber,
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 38
+                                lineNumber: 33
                             }
                         },
                         "cards number: ",
@@ -123,7 +123,6 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
                 (0, _api.fetchDeckResults)().then(function (items) {
                     items = JSON.parse(items);
-                    console.log('items is', Object.entries(items));
                     var deckList = [];
                     Object.entries(items).map(function (item) {
                         1 in item && 'title' in item[1] && deckList.push({
@@ -132,9 +131,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         });
                     });
 
-                    _this2.setState({
-                        deckList: deckList
-                    });
+                    _this2.props.fetchDeck(deckList);
                 });
             }
         }, {
@@ -142,22 +139,31 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             value: function render() {
                 var _this3 = this;
 
-                var deckList = this.state.deckList;
+                var deckList = this.props.deckList;
                 var ds = new _reactNative.ListView.DataSource({
                     rowHasChanged: function rowHasChanged(r1, r2) {
                         return r1 !== r2;
                     }
                 });
-                return _react3.default.createElement(_reactNative.ListView, {
-                    dataSource: ds.cloneWithRows(deckList),
-                    renderRow: function renderRow(rowData) {
-                        return _this3.renderDeck(rowData);
+                return _react3.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 42
+                        }
                     },
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 47
-                    }
-                });
+                    deckList && _react3.default.createElement(_reactNative.ListView, {
+                        dataSource: ds.cloneWithRows(deckList),
+                        renderRow: function renderRow(rowData) {
+                            return _this3.renderDeck(rowData);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 43
+                        }
+                    })
+                );
             }
         }]);
 
@@ -192,5 +198,20 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }
     });
 
-    exports.default = DeckList;
+    function mapStateToProps(_ref3) {
+        var deckList = _ref3.deckList;
+        return {
+            'deckList': deckList
+        };
+    }
+
+    function mapDispatchToProps(dispatch) {
+        return {
+            fetchDeck: function fetchDeck(deckList) {
+                return dispatch((0, _actions.fetchDeck)(deckList));
+            }
+        };
+    }
+
+    exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(DeckList);
 });

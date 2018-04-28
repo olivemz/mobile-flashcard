@@ -3,6 +3,8 @@ import {View, TextInput,ListView, Text, StyleSheet, Platform, TouchableOpacity }
 import { white } from '../utils/colors'
 import TextButton from './TextButton'
 import * as flashCardApi  from '../utils/api'
+import {fetchDeck} from "../actions";
+import {connect} from "react-redux";
 
 
 class DeckEntry extends Component{
@@ -21,7 +23,10 @@ class DeckEntry extends Component{
     render(){
         const params = this.props.navigation.state.params
         const name =  params ? params.name : ''
-        const cardsNumbers = params ? params.cardsNumbers : ''
+        const {deckList} = this.props
+        const cardsNumbers = (deckList.filter((deck) => deck.name === name).length > 0)
+            ? deckList.filter((deck) => deck.name === name)[0].cardsNumbers
+            : 0
 
         return(
             <View>
@@ -63,5 +68,17 @@ const styles = StyleSheet.create({
     }
 })
 
+function mapStateToProps({deckList}){
+    return {'deckList': deckList}
+}
 
-export default DeckEntry
+function mapDispatchToProps (dispatch) {
+    return {
+        fetchDeck: (deckList) => dispatch(fetchDeck(deckList)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DeckEntry)

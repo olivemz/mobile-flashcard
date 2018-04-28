@@ -16,9 +16,7 @@ class CardDetail extends Component{
     }
     correct =() =>{
         let score = this.state.score + 100/this.state.questions.length
-        console.log(score)
         let currentQuestId = (this.state.currentQuestId < this.state.questions.length) && this.state.currentQuestId + 1
-        console.log(currentQuestId)
         let finish = (currentQuestId === this.state.questions.length) ? true : false
         this.setState({score,currentQuestId,finish,type:'question'})
     }
@@ -47,7 +45,6 @@ class CardDetail extends Component{
         const name =  params ? params.name : ''
         getQuestionsInOneDeck(name).then(
             (arrReturn) => {
-                console.log(arrReturn);
                 this.setState({questions:arrReturn})
             }
         )

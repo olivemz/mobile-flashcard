@@ -3,34 +3,38 @@ import {View, TextInput,ListView, Text, StyleSheet, Platform, TouchableOpacity }
 import { white } from '../utils/colors'
 import TextButton from './TextButton'
 import {submitDeck}  from '../utils/api'
-
+import DeckEntry from "./DeckEntry";
+import { connect } from 'react-redux'
+import {fetchDeck} from "../actions";
 
 class NewDeck extends Component{
     state ={
         deckName:''
     }
-    submit =() =>{
-        console.log('this deck is', this.state.deckName);
-        let name = this.state.deckName;
-        let cardsNumbers = 0;
-        (this.state.deckName) && submitDeck(this.state.deckName).then(
-            this.setState({deckName:''})
-        ).then(this.props.navigation.navigate(
+    submit =(name) =>{
+        (name) && submitDeck(name).then((items)=>{items = JSON.parse(items)
+            let deckList = []
+            Object.entries(items).map(
+                (item) => {
+                    (1 in item ) && ('title' in item[1])&&(deckList.push({name:item[1].title, cardsNumbers:item[1].questions.length}))
+                }
+            )
+            this.props.fetchDeck(deckList)}).then(this.props.navigation.navigate(
             'DeckEntry',
-            {name, cardsNumbers}
+            {name}
         ))
     }
     render(){
+        let deckNameProps = '';
         return(
             <View>
                 <Text style={styles.title}>What is the title of your new deck?</Text>
                 <TextInput
                     style={styles.content}
-                    onChangeText={(deckName) => this.setState({deckName})}
-                    value={this.state.deckName}
+                    onChangeText={(deckName) => {deckNameProps = deckName}}
                     placeholder='Deck title'
                 />
-                <TextButton style={{margin: 20}} onPress={this.submit}>
+                <TextButton style={{margin: 20}} onPress={() =>this.submit(deckNameProps)}>
                     Submit
                 </TextButton>
             </View>
@@ -57,4 +61,18 @@ const styles = StyleSheet.create({
         marginRight: 10,
     }
 })
-export default NewDeck
+
+function mapStateToProps({deckList}){
+    return {'deckList': deckList}
+}
+
+function mapDispatchToProps (dispatch) {
+    return {
+        fetchDeck: (deckList) => dispatch(fetchDeck(deckList)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NewDeck)

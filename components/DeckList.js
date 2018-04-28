@@ -4,33 +4,28 @@ import { white } from '../utils/colors'
 import { StackNavigator } from 'react-navigation';
 import DeckEntry from "./DeckEntry";
 import { fetchDeckResults } from '../utils/api'
+import { connect } from 'react-redux'
+import {fetchDeck} from "../actions";
 
 
 class DeckList extends Component {
-
-
-    state = {
-        deckList: []
-    }
-
     componentDidMount (){
         fetchDeckResults().then((items)=>{
             items = JSON.parse(items)
-            console.log('items is', Object.entries(items));
             let deckList = []
             Object.entries(items).map(
                 (item) => {
                     (1 in item ) && ('title' in item[1])&&(deckList.push({name:item[1].title, cardsNumbers:item[1].questions.length}))
                 }
             )
-            this.setState({deckList: deckList})
+            this.props.fetchDeck(deckList)
         })
     }
-    renderDeck = ({name, cardsNumbers}) =>{ console.log ('name is', name) ; return (
+    renderDeck = ({name, cardsNumbers}) =>(
         <TouchableOpacity onPress={() =>
             this.props.navigation.navigate(
             'DeckEntry',
-            {name,cardsNumbers}
+            {name}
         )} style ={styles.item}>
             <Text style={styles.deckName}>
                 {name}
@@ -39,15 +34,17 @@ class DeckList extends Component {
                 cards number: {cardsNumbers}
             </Text>
         </TouchableOpacity>
-    )}
+    )
     render (){
-        const {deckList} = this.state
+        const {deckList} = this.props
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         return (
-            <ListView
+            <View>
+            {deckList && <ListView
                 dataSource={ds.cloneWithRows(deckList)}
                 renderRow={(rowData) => this.renderDeck(rowData)}
-            />
+            />}
+            </View>
         )
     }
 }
@@ -80,4 +77,18 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DeckList
+
+function mapStateToProps({deckList}){
+    return {'deckList': deckList}
+}
+
+function mapDispatchToProps (dispatch) {
+    return {
+        fetchDeck: (deckList) => dispatch(fetchDeck(deckList)),
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DeckList)

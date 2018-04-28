@@ -9,6 +9,9 @@ import { Constants } from 'expo'
 import CardDetail from './components/CardDetail'
 import DeckEntry from "./components/DeckEntry";
 import NewCard from "./components/NewCard";
+import reducer from './reducers'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
     return (
@@ -22,7 +25,6 @@ const Tabs = TabNavigator({
         screen: DeckList,
         navigationOptions: {
             tabBarLabel: 'Decks',
-
         },
     },
     NewDeck: {
@@ -98,10 +100,12 @@ const MainNavigator = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-          <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
-          <MainNavigator />
-      </View>
+        <Provider store={createStore(reducer)}>
+          <View style={{flex: 1}}>
+              <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
+              <MainNavigator />
+          </View>
+        </Provider>
     );
   }
 }
