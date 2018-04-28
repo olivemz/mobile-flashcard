@@ -4,17 +4,22 @@ import { white } from '../utils/colors'
 import TextButton from './TextButton'
 import * as flashCardApi  from '../utils/api'
 
-
 class NewCard extends Component{
     state ={
         question:'',
         answer:''
     }
-    submit =() =>{
+    submit =(name,cardsNumbers) =>{
+        cardsNumbers = cardsNumbers+1;
         (this.state.question && this.state.answer) &&
-        flashCardApi.submitCard({question: this.state.deckName,answer: this.state.answer},this.props.deckName)
+        flashCardApi.submitCard({question: this.state.question, answer: this.state.answer},name).then(
+           this.setState({question:'',answer:''})
+        );
     }
     render(){
+        const params = this.props.navigation.state.params
+        const name =  params ? params.name : ''
+        const cardsNumbers =  params ? params.cardsNumbers : ''
         return(
             <View>
                 <TextInput
@@ -29,7 +34,7 @@ class NewCard extends Component{
                     value={this.state.answer}
                     placeholder='Enter Answer here'
                 />
-                <TextButton style={{margin: 20}} onPress={this.submit}>
+                <TextButton style={{margin: 20}} onPress={() => this.submit(name,cardsNumbers)}>
                     Submit
                 </TextButton>
             </View>

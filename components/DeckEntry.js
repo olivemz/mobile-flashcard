@@ -6,7 +6,7 @@ import * as flashCardApi  from '../utils/api'
 
 
 class DeckEntry extends Component{
-    addCard =(name) =>{
+    addCard =(name,cardsNumbers) =>{
         this.props.navigation.navigate(
             'NewCard',
             {name}
@@ -28,10 +28,10 @@ class DeckEntry extends Component{
                 <Text style={styles.deckCardNumber}>
                     cards number: {cardsNumbers}
                 </Text>
-                <TextButton style={{margin: 20}} onPress={(name) => this.addCard(name)}>
+                <TextButton style={{margin: 20}} onPress={() => this.addCard(name)}>
                     Add Card
                 </TextButton>
-                <TextButton style={{margin: 20}} onPress={(name) => this.startQuiz(name)}>
+                <TextButton style={{margin: 20}} onPress={() => this.startQuiz(name)}>
                     Start Quiz
                 </TextButton>
             </View>

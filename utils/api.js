@@ -15,11 +15,13 @@ export function submitDeck (key) {
     }))
 }
 
-export function submitCard ({ entry, key }) {
+export function submitCard ( entry, key ) {
     return AsyncStorage.getItem(DECK_NAME)
         .then((results) => {
             const data = JSON.parse(results)
+            console.log(key, entry);
             data[key]['questions'].push(entry)
+            console.log(data);
             AsyncStorage.setItem(DECK_NAME, JSON.stringify(data))
         })
 }
