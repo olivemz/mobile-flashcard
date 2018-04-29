@@ -153,7 +153,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             lineNumber: 42
                         }
                     },
-                    deckList && _react3.default.createElement(_reactNative.ListView, {
+                    deckList ? _react3.default.createElement(_reactNative.ListView, {
                         dataSource: ds.cloneWithRows(deckList),
                         renderRow: function renderRow(rowData) {
                             return _this3.renderDeck(rowData);
@@ -162,7 +162,17 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             fileName: _jsxFileName,
                             lineNumber: 43
                         }
-                    })
+                    }) : _react3.default.createElement(
+                        _reactNative.Text,
+                        {
+                            style: styles.deckName,
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 47
+                            }
+                        },
+                        " Please a new deck to start"
+                    )
                 );
             }
         }]);

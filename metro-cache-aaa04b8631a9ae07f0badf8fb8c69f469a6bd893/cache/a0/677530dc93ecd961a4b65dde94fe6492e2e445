@@ -55,6 +55,8 @@ __d(function (global, _require, module, exports, _dependencyMap) {
 
     var _redux = _require(_dependencyMap[14], "redux");
 
+    var _notification = _require(_dependencyMap[15], "./utils/notification");
+
     function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -97,7 +99,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                 },
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 18
+                    lineNumber: 19
                 }
             },
             _react3.default.createElement(_reactNative.StatusBar, _extends({
@@ -106,7 +108,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
             }, props, {
                 __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 19
+                    lineNumber: 20
                 }
             }))
         );
@@ -198,6 +200,11 @@ __d(function (global, _require, module, exports, _dependencyMap) {
         }
 
         _createClass(App, [{
+            key: "componentDidMount",
+            value: function componentDidMount() {
+                (0, _notification.setLocalNotification)();
+            }
+        }, {
             key: "render",
             value: function render() {
                 return _react3.default.createElement(
@@ -206,7 +213,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                         store: (0, _redux.createStore)(_reducers2.default),
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 103
+                            lineNumber: 107
                         }
                     },
                     _react3.default.createElement(
@@ -217,7 +224,7 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             },
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 104
+                                lineNumber: 108
                             }
                         },
                         _react3.default.createElement(UdaciStatusBar, {
@@ -225,13 +232,13 @@ __d(function (global, _require, module, exports, _dependencyMap) {
                             barStyle: "light-content",
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 105
+                                lineNumber: 109
                             }
                         }),
                         _react3.default.createElement(MainNavigator, {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 106
+                                lineNumber: 110
                             }
                         })
                     )

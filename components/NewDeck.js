@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, TextInput,ListView, Text, StyleSheet, Platform, TouchableOpacity } from 'react-native'
+import {View, TextInput,ListView, Text, StyleSheet, Platform, TouchableOpacity,KeyboardAvoidingView } from 'react-native'
 import { white } from '../utils/colors'
 import TextButton from './TextButton'
 import {submitDeck}  from '../utils/api'
@@ -8,9 +8,7 @@ import { connect } from 'react-redux'
 import {fetchDeck} from "../actions";
 
 class NewDeck extends Component{
-    state ={
-        deckName:''
-    }
+
     submit =(name) =>{
         (name) && submitDeck(name).then((items)=>{items = JSON.parse(items)
             let deckList = []
@@ -27,7 +25,7 @@ class NewDeck extends Component{
     render(){
         let deckNameProps = '';
         return(
-            <View>
+            <KeyboardAvoidingView behavior="padding">
                 <Text style={styles.title}>What is the title of your new deck?</Text>
                 <TextInput
                     style={styles.content}
@@ -37,16 +35,21 @@ class NewDeck extends Component{
                 <TextButton style={{margin: 20}} onPress={() =>this.submit(deckNameProps)}>
                     Submit
                 </TextButton>
-            </View>
+            </KeyboardAvoidingView>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        alignItems: 'center',
+        justifyContent:'center',
+        paddingTop:30,
+    },
     title: {
         fontSize: 50,
-        paddingTop: 50,
-        paddingBottom: 50,
+        paddingBottom: 25,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: 10,

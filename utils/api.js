@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native'
+
 const DECK_NAME = 'MobileFlashcard:deckname'
 
 export function fetchDeckResults () {
@@ -27,3 +28,4 @@ export function submitCard ( entry, key ) {
             AsyncStorage.setItem(DECK_NAME, JSON.stringify(data))
         }).then(() => AsyncStorage.getItem(DECK_NAME))
 }
+

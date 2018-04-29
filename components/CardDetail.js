@@ -4,7 +4,7 @@ import { white } from '../utils/colors'
 import TextButton from './TextButton'
 import * as flashCardApi  from '../utils/api'
 import {getQuestionsInOneDeck} from "../utils/api";
-
+import {clearLocalNotification, setLocalNotification} from "../utils/notification"
 
 class CardDetail extends Component{
     state ={
@@ -19,12 +19,15 @@ class CardDetail extends Component{
         let currentQuestId = (this.state.currentQuestId < this.state.questions.length) && this.state.currentQuestId + 1
         let finish = (currentQuestId === this.state.questions.length) ? true : false
         this.setState({score,currentQuestId,finish,type:'question'})
+        finish === true && clearLocalNotification().then(setLocalNotification())
     }
 
     incorrect =() =>{
         let currentQuestId = (this.state.currentQuestId< this.state.questions.length) && this.state.currentQuestId + 1
         let finish = (currentQuestId === this.state.questions.length) ? true: false
         this.setState({currentQuestId,finish,type:'question'})
+        finish === true && clearLocalNotification().then(setLocalNotification())
+
     }
     flipCard = (type) =>{
         this.setState(()=>({

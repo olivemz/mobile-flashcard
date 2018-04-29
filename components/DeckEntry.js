@@ -24,7 +24,9 @@ class DeckEntry extends Component{
         const params = this.props.navigation.state.params
         const name =  params ? params.name : ''
         const {deckList} = this.props
-        const cardsNumbers = (deckList.filter((deck) => deck.name === name).length > 0)
+        console.log(deckList);
+        console.log(deckList.filter((deck) => deck.name === name));
+        const cardsNumbers = (deckList.length > 0 && deckList.filter((deck) => deck.name === name).length > 0)
             ? deckList.filter((deck) => deck.name === name)[0].cardsNumbers
             : 0
 

@@ -40,10 +40,12 @@ class DeckList extends Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         return (
             <View>
-            {deckList && <ListView
+            {deckList ? <ListView
                 dataSource={ds.cloneWithRows(deckList)}
                 renderRow={(rowData) => this.renderDeck(rowData)}
-            />}
+            />
+            :<Text style ={styles.deckName}> Please a new deck to start</Text>
+            }
             </View>
         )
     }
